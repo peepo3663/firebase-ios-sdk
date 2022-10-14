@@ -14,6 +14,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+DOCC_DERIVED_DATA=".build/derived-data"
+
+if [ -d "${DOCC_DERIVED_DATA}" ] 
+then
+    rm -rf "${DOCC_DERIVED_DATA}";
+fi
+
+mkdir "${DOCC_DERIVED_DATA}";
+
 xcodebuild docbuild -scheme $1 \
     -derivedDataPath '.build/derived-data/' \
     -destination 'generic/platform=$2' \
