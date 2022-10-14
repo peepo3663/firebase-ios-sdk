@@ -16,7 +16,7 @@
 
 DOCC_DERIVED_DATA=".build/derived-data"
 
-if [ -d "${DOCC_DERIVED_DATA}" ] 
+if [ -d "${DOCC_DERIVED_DATA}" ]
 then
     rm -rf "${DOCC_DERIVED_DATA}";
 fi
@@ -25,5 +25,5 @@ mkdir "${DOCC_DERIVED_DATA}";
 
 xcodebuild docbuild -scheme $1 \
     -derivedDataPath '.build/derived-data/' \
-    -destination 'generic/platform=$2' \
+    -destination 'generic/platform=iOS' \
     DOCC_HOSTING_BASE_PATH=''

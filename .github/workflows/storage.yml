@@ -61,7 +61,7 @@ jobs:
     - name: Swift Unit Tests
       run: scripts/third_party/travis/retry.sh ./scripts/build.sh FirebaseStorageUnit iOS spm
 
-  docbuild:
+  docc:
     runs-on: macos-12
     steps:
     - uses: actions/checkout@v2
