@@ -64,6 +64,13 @@ jobs:
     - name: Setup project and Build for Catalyst
       run: scripts/test_catalyst.sh FirebaseAppDistribution test FirebaseAppDistribution-Unit-unit
 
+  docc:
+    runs-on: macos-12
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run docbuild
+      run: scripts/docbuild.sh FirebaseAppDistribution iOS
+
   appdistribution-cron-only:
     if: github.event_name == 'schedule' && github.repository == 'Firebase/firebase-ios-sdk'
 

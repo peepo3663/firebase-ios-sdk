@@ -81,6 +81,13 @@ jobs:
     - name: Setup project and Build for Catalyst
       run: scripts/test_catalyst.sh FirebaseInstallations test FirebaseInstallations-Unit-unit
 
+  docc:
+    runs-on: macos-12
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run docbuild
+      run: scripts/docbuild.sh FirebaseInstallations iOS
+
   quickstart:
     # Don't run on private repo unless it is a PR.
     if: (github.repository == 'Firebase/firebase-ios-sdk' && github.event_name == 'schedule') || github.event_name == 'pull_request'
