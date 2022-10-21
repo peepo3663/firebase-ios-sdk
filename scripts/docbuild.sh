@@ -14,16 +14,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-DOCC_DERIVED_DATA=".build/derived-data"
+DOCC_DERIVED_DATA=".build/"
 
-if [ -d "${DOCC_DERIVED_DATA}" ]
-then
+if [[ -z "$GITHUB_ACTIONS" ]]; then
+    echo "ignoring GoogleAppMeasurement version requirements"
+    exit(1)
+    sed -i '' 's#exact("[0-9.]*#branch("main#' Package.swift
+fi
+
+if [[ -d "${DOCC_DERIVED_DATA}" ]]; then
     rm -rf "${DOCC_DERIVED_DATA}";
 fi
 
 mkdir "${DOCC_DERIVED_DATA}";
 
 xcodebuild docbuild -scheme $1 \
-    -derivedDataPath '.build/derived-data/' \
-    -destination 'generic/platform=iOS' \
-    DOCC_HOSTING_BASE_PATH=''
+    -derivedDataPath "${DOCC_DERIVED_DATA}" \
+    -destination "generic/platform=iOS" \
+    DOCC_HOSTING_BASE_PATH=""
