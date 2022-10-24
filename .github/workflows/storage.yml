@@ -66,13 +66,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run docbuild
-      run: scripts/docbuild.sh FirebaseStorage iOS
-    - name: Package doc bundle
-      run: zip .build/derived-data/FirebaseStorage.doccarchive.zip .build/derived-data/Build/Products/Debug-iphoneos/FirebaseStorage.doccarchive
-    - uses: actions/upload-artifact@v3
-      with:
-        name: Documentation bundle
-        path: .build/derived-data/FirebaseStorage.doccarchive.zip
+      run: scripts/docbuild.sh FirebaseStorage iOS ${{ GITHUB_ACTIONS }}
 
   spm-cron:
     # Don't run on private repo.

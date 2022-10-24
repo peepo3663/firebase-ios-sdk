@@ -97,9 +97,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Run docbuild
-      run: scripts/docbuild.sh FirebaseDatabase iOS
-      env:
-        GITHUB_ACTIONS: "true"
+      run: scripts/docbuild.sh FirebaseDatabase iOS ${{ GITHUB_ACTIONS }}
 
   quickstart:
     # Don't run on private repo unless it is a PR.

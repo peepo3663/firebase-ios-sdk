@@ -15,10 +15,10 @@
 # limitations under the License.
 
 DOCC_DERIVED_DATA=".build/"
+GITHUB_ACTIONS="$2"
 
 if [[ -z "$GITHUB_ACTIONS" ]]; then
     echo "ignoring GoogleAppMeasurement version requirements"
-    exit 1
     sed -i '' 's#exact("[0-9.]*#branch("main#' Package.swift
 fi
 
