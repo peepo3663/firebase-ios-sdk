@@ -62,13 +62,6 @@ jobs:
     - name: PodLibLint Storage Cron
       run: scripts/third_party/travis/retry.sh scripts/pod_lib_lint.rb FirebaseDynamicLinks.podspec --platforms=ios ${{ matrix.flags }}
 
-  docc:
-    runs-on: macos-12
-    steps:
-    - uses: actions/checkout@v2
-    - name: Run docbuild
-      run: scripts/docbuild.sh FirebaseDynamicLinks iOS
-
   quickstart:
     # Don't run on private repo unless it is a PR.
     if: (github.repository == 'Firebase/firebase-ios-sdk' && github.event_name == 'schedule') || github.event_name == 'pull_request'
