@@ -70,7 +70,6 @@ jobs:
   quickstart:
     # Don't run on private repo unless it is a PR.
     if: (github.repository == 'Firebase/firebase-ios-sdk' && github.event_name == 'schedule') || github.event_name == 'pull_request'
-
     env:
       plist_secret: ${{ secrets.GHASecretsGPGPassphrase1 }}
       signin_secret: ${{ secrets.GHASecretsGPGPassphrase1 }}
@@ -90,6 +89,15 @@ jobs:
       env:
         LEGACY: true
       run: ([ -z $plist_secret ] || scripts/third_party/travis/retry.sh scripts/test_quickstart.sh ABTesting true)
+
+  docc:
+    runs-on: macos-12
+    steps:
+    - uses: actions/checkout@v2
+    - name: Ignore GoogleAppMeasurement
+      run: sed -i '' 's#exact("[0-9.]*#branch("main#' Package.swift
+    - name: Run docbuild
+      run: scripts/docbuild.sh FirebaseABTesting
 
   abtesting-cron-only:
     # Don't run on private repo.

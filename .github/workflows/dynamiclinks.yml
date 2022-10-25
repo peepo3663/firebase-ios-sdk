@@ -89,3 +89,12 @@ jobs:
     - name: Test swift quickstart
       if: ${{ always() }}
       run: ([ -z $plist_secret ] || scripts/third_party/travis/retry.sh scripts/test_quickstart.sh DynamicLinks true swift)
+
+  docc:
+    runs-on: macos-12
+    steps:
+    - uses: actions/checkout@v2
+    - name: Ignore GoogleAppMeasurement
+      run: sed -i '' 's#exact("[0-9.]*#branch("main#' Package.swift
+    - name: Run docbuild
+      run: scripts/docbuild.sh FirebaseDynamicLinks

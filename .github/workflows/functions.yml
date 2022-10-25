@@ -133,3 +133,12 @@ jobs:
       run: |
         scripts/third_party/travis/retry.sh scripts/pod_lib_lint.rb \
           FirebaseFunctions.podspec --platforms=${{ matrix.target }} --use-static-frameworks
+
+  docc:
+    runs-on: macos-12
+    steps:
+    - uses: actions/checkout@v2
+    - name: Ignore GoogleAppMeasurement
+      run: sed -i '' 's#exact("[0-9.]*#branch("main#' Package.swift
+    - name: Run docbuild
+      run: scripts/docbuild.sh FirebaseFunctions
