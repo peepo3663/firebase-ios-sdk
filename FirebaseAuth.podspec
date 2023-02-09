@@ -55,9 +55,9 @@ supports email and password accounts, as well as several 3rd party authenticatio
   s.dependency 'GoogleUtilities/AppDelegateSwizzler', '~> 7.8'
   s.dependency 'GoogleUtilities/Environment', '~> 7.8'
   s.dependency 'GTMSessionFetcher/Core', '>= 2.1', '< 4.0'
-  s.ios.dependency 'RecaptchaEnterprise', '~> 18.1.0'
+  s.dependency 'RecaptchaEnterprise', '~> 18.1.0', :platforms => [:ios]
+  
   s.static_framework = true
-
   # Using environment variable because of the dependency on the unpublished
   # HeartbeatLoggingTestUtils.
   if ENV['POD_LIB_LINT_ONLY'] && ENV['POD_LIB_LINT_ONLY'] == '1' then
