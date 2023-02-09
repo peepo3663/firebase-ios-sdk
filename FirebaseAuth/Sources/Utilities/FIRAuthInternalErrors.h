@@ -487,7 +487,7 @@ typedef NS_ENUM(NSInteger, FIRAuthInternalErrorCode) {
   FIRAuthInternalErrorCodeRecaptchaNotEnabled = FIRAuthPublicErrorCodeFlag |
                                                 FIRAuthErrorCodeRecaptchaNotEnabled,
 
-  /** Indicates that an authentication blocking cloud function returned an error.
+    /** Indicates that an authentication blocking cloud function returned an error.
    */
   FIRAuthInternalErrorBlockingCloudFunctionError = FIRAuthPublicErrorCodeFlag |
                                                    FIRAuthErrorCodeBlockingCloudFunctionError,
