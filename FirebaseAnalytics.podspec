@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
     s.libraries  = 'c++', 'sqlite3', 'z'
     s.frameworks = 'StoreKit'
 
-    s.dependency 'FirebaseCore', '~> 10.0'
+    s.dependency 'FirebaseCore', '~> 10.6.0'
     s.dependency 'FirebaseInstallations', '~> 10.0'
     s.dependency 'GoogleUtilities/AppDelegateSwizzler', '~> 7.8'
     s.dependency 'GoogleUtilities/MethodSwizzler', '~> 7.8'
